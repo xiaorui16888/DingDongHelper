@@ -1,19 +1,19 @@
 # 以下参数需抓包修改为自己的
-Cookie: ''
-city_number: ''
-device_id: ''
-latitude: ''
-longitude: ''
-station_id: ''
-uid: ''
-device_token: ''
-openid: ''
-address_id: ''
+Cookie: 'DDXQSESSID=7c6ab551b22086bc9b4341239f3315c6'
+city_number: '0101'
+device_id: 'osP8I0VszpuXGpVLsKQdDFmuKko8'
+latitude: '31.122488'
+longitude: '121.224299'
+station_id: '5be3ad27716de100468c17ca'
+uid: '624c0f45845f80000113c016'
+device_token: 'WHJMrwNw1k/F0qdLNvE01AY27F+0KAEgUkqhVisrSiEPF2rZYS11KiCTVuz1rRpqX2fmxK/K2WVraizAf98WRmSt0jZtjWsSHdCW1tldyDzmauSxIJm5Txg==1487582755342'
+openid: 'osP8I0VszpuXGpVLsKQdDFmuKko8'
+address_id: '624c69a9ee8ec40001d5a8cd'
 
 # 微信通知
 # 获取to_wxid需要添加我的微信：iamyangxuea
 # 添加微信后，发送 wxid ,即可获取
-to_wxid: ''
+to_wxid: 'wxid_vk1drxylxh522'
 notice_url: 'http://tools.guoxiaorui.cn/robot.php'
 
 # 间隔时间（秒）

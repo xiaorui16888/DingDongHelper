@@ -157,8 +157,8 @@ if __name__ == '__main__':
     # 第一步，需要你抓包后，手动配置user.yml里面的参数，
 
     # # 获取收货地址--address_id，station_id。获取到后需要手动配置到user.yml里面
-    # getValidAddress()
+    getValidAddress()
     # # 获取购物车内商品信息，写入到card.yml，用于监控运力。
-    # getCardMsg()
+    getCardMsg()
     # # 监控运力进行通知，可以一直挂在服务器上或者本地，用于捡漏
     getMultiReserveTime()
