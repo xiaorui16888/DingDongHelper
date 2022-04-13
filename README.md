@@ -5,6 +5,24 @@
 
 本项目纯属学习使用，不可用作商业行为，任何违法违规造成的问题与本人无关
 
+## 小白必看
+
+如果你没有任何开发的基础，包括没有`python`环境。
+
+仅仅需要打开目录`dist`下的main.exe使用即可。但是一定要配置dist目录下的`card.yml`和`user.yml`。
+
+如果你有python基础，并且想二次开发本程序，则需要配置的是根目录下的`card.yml`和`user.yml`。
+
+## 可能会发生的问题
+
+如果程序报以下错误
+
+```
+IndexError：list index out of range
+```
+
+你只需要随便添加一个商品到购物车，就ok了。并且此操作不影响对运力的监控。
+
 ## 功能
 
 ① address_id和station_id获取

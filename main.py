@@ -70,6 +70,10 @@ common_params = {
 
 # 获取收货地址--address_id,station_id
 def getValidAddress():
+    if user_config['Cookie'] == '':
+        logging.error("------------------- cookie配置错误，请配置 ------------------- ")
+        exit()
+
     header = {
         'Host': 'sunquan.api.ddxq.mobi',
         'Connection': 'keep-alive',
@@ -95,14 +99,20 @@ def getCardMsg():
     response = requests.post(url=GETCardProductUrl, timeout=10000, headers=common_header, data=common_params,
                              verify=False).json()
     print(response)
-    logging.info("------------------- 购物车商品信息如下 ------------------- ")
     products = '[{0}]'.format(str(response['data']['product']['effective'][0]['products']))
+    print(products)
     with open('./card.yml', "w", encoding="utf-8") as f:
         yaml.dump({'products': products}, f, Dumper=yaml.RoundTripDumper)
 
 
 # 监控运力
 def getMultiReserveTime():
+    card_content = open('./card.yml', 'r', encoding='utf-8')
+    card_config = yaml.load(card_content.read(), Loader=yaml.Loader)
+    if card_config['products'] == '':
+        logging.error("------------------- 购物车商品获取失败，请检查你的参数配置是否正确 ------------------- ")
+        exit()
+
     resp = requests.get('{0}?do=remote&msg=你已经开启微信通知模式&to_wxid={1}'.format(user_config['notice_url'],
                                                                            user_config['to_wxid']))
     if resp.status_code == requests.codes.ok:
@@ -111,8 +121,6 @@ def getMultiReserveTime():
         logging.error("------------------- 通知开启失败 ------------------- ")
         exit()
 
-    card_content = open('./card.yml', 'r', encoding='utf-8')
-    card_config = yaml.load(card_content.read(), Loader=yaml.Loader)
     common_params['products'] = card_config['products'].replace('False', 'false')
     common_params['isBridge'] = 'false'
     common_params['group_config_id'] = ''
@@ -141,16 +149,16 @@ def getMultiReserveTime():
             logging.info(
                 "------------------- 今天暂无可以订购的时段！ --------------" + str(response['data'][0]['time'][0]['times']))
 
-        time.sleep(15)
+        time.sleep(user_config['sleep_time'])
 
 
 if __name__ == '__main__':
     print('本项目纯属学习使用，不可用作商业行为！任何违法违规造成的问题与本人无关！')
     # 第一步，需要你抓包后，手动配置user.yml里面的参数，
 
-    # 获取收货地址--address_id，station_id。获取到后需要手动配置到user.yml里面
+    # # 获取收货地址--address_id，station_id。获取到后需要手动配置到user.yml里面
     # getValidAddress()
-    # 获取购物车内商品信息，写入到card.yml，用于监控运力。
+    # # 获取购物车内商品信息，写入到card.yml，用于监控运力。
     # getCardMsg()
-    # 监控运力进行通知，可以一直挂在服务器上或者本地，用于捡漏
+    # # 监控运力进行通知，可以一直挂在服务器上或者本地，用于捡漏
     getMultiReserveTime()
