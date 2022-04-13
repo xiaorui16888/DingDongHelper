@@ -1,0 +1,15 @@
+# 以下参数需抓包修改为自己的
+Cookie: ''
+city_number: ''
+device_id: ''
+latitude: ''
+longitude: ''
+station_id: ''
+uid: ''
+device_token: ''
+openid: ''
+address_id: ''
+
+# 微信通知
+to_wxid: ''
+notice_url: '
