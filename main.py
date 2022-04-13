@@ -117,29 +117,31 @@ def getMultiReserveTime():
     common_params['isBridge'] = 'false'
     common_params['group_config_id'] = ''
     common_params['address_id'] = user_config['address_id']
-    response = requests.post(url=GetMultiReserveTimeUrl, timeout=10000, headers=common_header, data=common_params,
-                             verify=False).json()
-    day_times = response['data'][0]['time'][0]['times']
-    can_order = False
+    while True:
+        response = requests.post(url=GetMultiReserveTimeUrl, timeout=10000, headers=common_header, data=common_params,
+                                 verify=False).json()
+        day_times = response['data'][0]['time'][0]['times']
+        can_order = False
 
-    for t in day_times:
-        if t['disableType'] == 0 and t['select_msg'] != '自动尝试可用时段':
-            can_order = True
-            break
-    if can_order:
-        select_msg = str(response['data'][0]['time'][0]['select_msg'])
-        logging.info(
-            "----- 今天可以选择付款时间段！！请火速抢购 -----" + select_msg)
-        resp = requests.get('{0}?do=remote&msg=今天可以选择付款时间段！！请火速抢购&to_wxid={1}'.format(user_config['notice_url'],
-                                                                                      user_config['to_wxid']))
-        if resp.status_code == requests.codes.ok:
-            logging.info("------------------- 通知发送成功 ------------------- ")
+        for t in day_times:
+            if t['disableType'] == 0 and t['select_msg'] != '自动尝试可用时段':
+                can_order = True
+                break
+        if can_order:
+            select_msg = str(response['data'][0]['time'][0]['select_msg'])
+            logging.info(
+                "----- 今天可以选择付款时间段！！请火速抢购 -----" + select_msg)
+            resp = requests.get('{0}?do=remote&msg=今天可以选择付款时间段！！请火速抢购&to_wxid={1}'.format(user_config['notice_url'],
+                                                                                          user_config['to_wxid']))
+            if resp.status_code == requests.codes.ok:
+                logging.info("------------------- 通知发送成功 ------------------- ")
+            else:
+                logging.error("------------------- 通知发送失败 ------------------- ")
         else:
-            logging.error("------------------- 通知发送失败 ------------------- ")
-    else:
-        logging.info("------------------- 今天暂无可以订购的时段！ --------------" + str(response['data'][0]['time'][0]['times']))
+            logging.info(
+                "------------------- 今天暂无可以订购的时段！ --------------" + str(response['data'][0]['time'][0]['times']))
 
-    time.sleep(15)
+        time.sleep(15)
 
 
 if __name__ == '__main__':
@@ -151,4 +153,4 @@ if __name__ == '__main__':
     # 获取购物车内商品信息，写入到card.yml，用于监控运力。
     # getCardMsg()
     # 监控运力进行通知，可以一直挂在服务器上或者本地，用于捡漏
-    # getMultiReserveTime()
+    getMultiReserveTime()
