@@ -12,4 +12,4 @@ address_id: ''
 
 # 微信通知
 to_wxid: ''
-notice_url: '
+notice_url: 'http://tools.guoxiaorui.cn/robot.php'
