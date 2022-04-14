@@ -1,17 +1,1 @@
-products: "[[{'id': '612cc085095fb38bb1a61a0a', 'type': 0, 'category': '', 'price':\
-  \ '1199.00', 'sizes': [], 'count': 1, 'status': 1, 'gifts': [], 'addTime': 1649852716,\
-  \ 'cart_id': '612cc085095fb38bb1a61a0a', 'activity_id': '', 'sku_activity_id': '',\
-  \ 'conditions_num': '', 'activity_tag': '', 'category_path': '', 'manage_category_path':\
-  \ '411,412,413', 'total_price': '1199.00', 'origin_price': '1199.00', 'no_supplementary_price':\
-  \ '1199.00', 'no_supplementary_total_price': '1199.00', 'size_price': '0.00', 'add_price':\
-  \ '1199.00', 'add_vip_price': '', 'price_type': 0, 'buy_limit': 0, 'promotion_num':\
-  \ 0, 'product_name': '\u6CF8\u5DDE\u8001\u7A96 \u56FD\u7A961573\u6D53\u9999\u578B\
-  52\u5EA6\u767D\u9152 500ml/\u74F6', 'product_type': 0, 'small_image': 'https://ddfs-public.ddimg.mobi/img/blind/product-management/202108/e891f048fb7145949504a2e543f0e52a.jpg?width=800&height=800',\
-  \ 'all_sizes': [], 'only_new_user': False, 'is_check': 1, 'is_gift': 0, 'is_bulk':\
-  \ 0, 'view_total_weight': '\u74F6', 'net_weight': '500', 'net_weight_unit': 'ml',\
-  \ 'is_stock': False, 'old_count': 1, 'stock_number': 2, 'not_meet': [], 'is_presale':\
-  \ 0, 'presale_id': '', 'presale_type': 0, 'delivery_start_time': 0, 'delivery_end_time':\
-  \ 0, 'is_invoice': 1, 'is_onion': 0, 'sub_list': [], 'is_booking': 0, 'today_stockout':\
-  \ '', 'storage_value_id': 0, 'temperature_layer': '', 'is_shared_station_product':\
-  \ 0, 'is_fresh_food': 0, 'accessory_gifts': [], 'accessory_text': '', 'supplementary_list':\
-  \ []}]]"
+products: ""

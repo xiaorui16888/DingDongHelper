@@ -84,7 +84,15 @@ def getValidAddress():
         'Accept-Encoding': 'gzip, deflate, br',
     }
     response = requests.get(url=GETUserAddressUrl, timeout=10000, headers=header, verify=False).json()
+    if not response['success']:
+        logging.error(response['message'])
+        exit()
+
     addressList = response['data']['valid_address']
+    if len(addressList) == 0:
+        logging.info("！！！你怎么不设置收货地址呢！！！")
+        exit()
+
     logging.info("------------------- 获取到{0}个地址 ------------------- ".format(len(addressList)))
     for index, address in enumerate(addressList):
         logging.info(
@@ -99,10 +107,14 @@ def getCardMsg():
     response = requests.post(url=GETCardProductUrl, timeout=10000, headers=common_header, data=common_params,
                              verify=False).json()
     print(response)
-    products = '[{0}]'.format(str(response['data']['product']['effective'][0]['products']))
-    print(products)
-    with open('./card.yml', "w", encoding="utf-8") as f:
-        yaml.dump({'products': products}, f, Dumper=yaml.RoundTripDumper)
+    try:
+        products = '[{0}]'.format(str(response['data']['product']['effective'][0]['products']))
+        print(products)
+        with open('./card.yml', "w", encoding="utf-8") as f:
+            yaml.dump({'products': products}, f, Dumper=yaml.RoundTripDumper)
+    except:
+        logging.error("！购物车商品都失效了，你先随便添加个商品到你的购物车吧！")
+        exit()
 
 
 # 监控运力
@@ -110,7 +122,7 @@ def getMultiReserveTime():
     card_content = open('./card.yml', 'r', encoding='utf-8')
     card_config = yaml.load(card_content.read(), Loader=yaml.Loader)
     if card_config['products'] == '':
-        logging.error("------------------- 购物车商品获取失败，请检查你的参数配置是否正确 ------------------- ")
+        logging.error("！购物车商品都失效了，你先随便添加个商品到你的购物车吧！")
         exit()
 
     resp = requests.get('{0}?do=remote&msg=你已经开启微信通知模式&to_wxid={1}'.format(user_config['notice_url'],
@@ -128,28 +140,33 @@ def getMultiReserveTime():
     while True:
         response = requests.post(url=GetMultiReserveTimeUrl, timeout=10000, headers=common_header, data=common_params,
                                  verify=False).json()
-        day_times = response['data'][0]['time'][0]['times']
-        can_order = False
 
-        for t in day_times:
-            if t['disableType'] == 0 and t['select_msg'] != '自动尝试可用时段':
-                can_order = True
-                break
-        if can_order:
-            select_msg = str(response['data'][0]['time'][0]['select_msg'])
-            logging.info(
-                "----- 今天可以选择付款时间段！！请火速抢购 -----" + select_msg)
-            resp = requests.get('{0}?do=remote&msg=今天可以选择付款时间段！！请火速抢购&to_wxid={1}'.format(user_config['notice_url'],
-                                                                                          user_config['to_wxid']))
-            if resp.status_code == requests.codes.ok:
-                logging.info("------------------- 通知发送成功 ------------------- ")
+        try:
+            day_times = response['data'][0]['time'][0]['times']
+            can_order = False
+
+            for t in day_times:
+                if t['disableType'] == 0 and t['select_msg'] != '自动尝试可用时段':
+                    can_order = True
+                    break
+            if can_order:
+                select_msg = str(response['data'][0]['time'][0]['select_msg'])
+                logging.info(
+                    "----- 今天可以选择付款时间段！！请火速抢购 -----" + select_msg)
+                resp = requests.get('{0}?do=remote&msg=今天可以选择付款时间段！！请火速抢购&to_wxid={1}'.format(user_config['notice_url'],
+                                                                                              user_config['to_wxid']))
+                if resp.status_code == requests.codes.ok:
+                    logging.info("------------------- 通知发送成功 ------------------- ")
+                else:
+                    logging.error("------------------- 通知发送失败 ------------------- ")
             else:
-                logging.error("------------------- 通知发送失败 ------------------- ")
-        else:
-            logging.info(
-                "------------------- 今天暂无可以订购的时段！ --------------" + str(response['data'][0]['time'][0]['times']))
+                logging.info(
+                    "------------------- 今天暂无可以订购的时段！ --------------" + str(response['data'][0]['time'][0]['times']))
 
-        time.sleep(user_config['sleep_time'])
+            time.sleep(user_config['sleep_time'])
+        except:
+            logging.error('~~~兄弟，你的账号怕是掉线了~~~')
+            exit()
 
 
 if __name__ == '__main__':
