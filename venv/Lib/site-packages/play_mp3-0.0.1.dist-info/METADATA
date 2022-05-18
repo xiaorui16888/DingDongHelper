@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: play-mp3
+Version: 0.0.1
+Summary: This is a simple python package with which we can play .mp3 sounds.
+Home-page: https://github.com/pypa/play_mp3
+Author: Shreyansh Kushwaha
+Author-email: shreyansh.halk@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: playsound
+
+# play_mp3
+
+This is a simple package with which you can play .mp3 files:-
+The syntax is:-
+
+import Play_mp3
+play_mp3.play(filename-here)
+

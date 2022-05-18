@@ -1,0 +1,32 @@
+# cookie抓到什么，填写什么
+cookie: ''
+# 跟随抓包的接口数据而定
+uid: ''
+# referer
+referer: 'https://wx.m.ddxq.mobi/'
+# 跟随抓包的接口数据而定
+build_version: '2.86.5'
+# 跟随抓包的接口数据而定
+api_version: '9.51.0'
+# 跟随抓包的接口数据而定
+app_client_id: '3'
+# 跟随抓包的接口数据而定
+pay_type: '3'
+
+# user_agent尽量不要修改
+user_agent: 'Mozilla/5.0 (Linux; U; Android 5.1.1; zh-CN; RMX1991 Build/LMY48G) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/69.0.3497.100 UWS/3.22.2.38 Mobile Safari/537.36 UCBS/3.22.2.38_211216145502 ChannelId(2) NebulaSDK/1.8.100112 Nebula AlipayDefined(nt:WIFI,ws:351|0|3.08125) AliApp(AP/10.2.53.7000) AlipayClient/10.2.53.7000 Language/zh-Hans useStatusBar/true isConcaveScreen/false Region/CNAriver/1.0.0'
+# # 哨兵模式--休眠时间（秒）
+sleep_time_left: 10
+sleep_time_right: 20
+# 程序出错后多少秒后执行
+sleep_error_time: 5
+# 是否哨兵模式 0秒杀，1哨兵
+buy_model: 1
+# 秒杀模式--休眠时间（秒）
+sleep_time_spike: 2
+
+# WxPusher的uid
+wxpush_id: ''
+
+#秘钥
+activate_key: ''

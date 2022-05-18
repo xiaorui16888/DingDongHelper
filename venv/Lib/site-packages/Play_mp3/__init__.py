@@ -1,0 +1,6 @@
+import playsound
+def play(filename):
+    try:
+        playsound.playsound(filename)
+    except Exception as ide:
+        print(f'Error: {ide}')
