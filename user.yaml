@@ -1,7 +1,7 @@
 # cookie抓到什么，填写什么
-cookie: ''
+cookie: 'dd_guid=f6b3e243428f02bffd6f891d1304d5ca; DDXQSESSID=b6b3509fe6206460d2df88b2f76525b1'
 # 跟随抓包的接口数据而定
-uid: ''
+uid: '626ee798e6b417001edcdbcf'
 # referer
 referer: 'https://wx.m.ddxq.mobi/'
 # 跟随抓包的接口数据而定
@@ -26,7 +26,7 @@ buy_model: 1
 sleep_time_spike: 2
 
 # WxPusher的uid
-wxpush_id: ''
+wxpush_id: 'dasdasdasdsasda'
 
 #秘钥
-activate_key: ''
+activate_key: '35b77856a9d657b00a47f3e222c7683b'

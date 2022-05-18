@@ -333,9 +333,11 @@ def getOneAddress():
         'Referer': 'https://servicewechat.com/wx1e113254eda17715/422/page-frame.html',
         'Accept-Encoding': 'gzip, deflate, br',
     }
-    response = requests.request('get', url='https://sunquan.api.ddxq.mobi/api/v1/user/address/', timeout=10000,
+    response = requests.request('get', url='https://sunquan.api.ddxq.mobi/api/v1/user/address/?'
+                                           'app_client_id='+str(user_config['app_client_id'])+'&h5_source=&wx=1&sharer_uid=', timeout=10000,
                                 headers=header,
                                 ).json()
+    print(response)
     addressList = response['data']['valid_address']
     print("------------------- 获取到{0}个地址 ------------------- ".format(len(addressList)))
     address = addressList[0]
