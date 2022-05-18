@@ -57,7 +57,7 @@ https://wxpusher.zjiecode.com/wxuser/?openId=orPQ806_O65ymisOhxCWuuaNV7vo#/
 
 ## 成功案例
 
-![image-20220518121244322](E:/work/new_blog/docs/.vuepress/public/img/blog/image-20220518121244322.png)
+![image-20220518121244322](./source/20220518121244322.png)
 
 ## 结语
 
