@@ -65,6 +65,6 @@ https://wxpusher.zjiecode.com/wxuser/?openId=orPQ806_O65ymisOhxCWuuaNV7vo#/
 
 ## 结语
 
-如果看完了这篇教程，你还是不会...那你不妨叫我好友（itestcoder），一杯咖啡~
+如果看完了这篇教程，你还是不会...那你不妨叫我好友（itestcoder），一杯咖啡~不接受任何无偿...
 
 最后，疫情早点结束！大家都不会饿肚子！
