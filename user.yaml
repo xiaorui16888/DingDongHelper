@@ -1,20 +1,20 @@
 # cookie抓到什么，填写什么
-cookie: 'dd_guid=f6b3e243428f02bffd6f891d1304d5ca; DDXQSESSID=b6b3509fe6206460d2df88b2f76525b1'
+cookie: 'DDXQSESSID=820e31e023347a4e4b3cc03b693bfa8b; dd_guid=437b7dd3f01e6a869b07167303257e3f'
 # 跟随抓包的接口数据而定
 uid: '626ee798e6b417001edcdbcf'
 # referer
 referer: 'https://wx.m.ddxq.mobi/'
 # 跟随抓包的接口数据而定
-build_version: '2.86.5'
+build_version: '2.87.0'
 # 跟随抓包的接口数据而定
-api_version: '9.51.0'
+api_version: '9.52.0'
 # 跟随抓包的接口数据而定
 app_client_id: '3'
 # 跟随抓包的接口数据而定
 pay_type: '3'
 
 # user_agent尽量不要修改
-user_agent: 'Mozilla/5.0 (Linux; U; Android 5.1.1; zh-CN; RMX1991 Build/LMY48G) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/69.0.3497.100 UWS/3.22.2.38 Mobile Safari/537.36 UCBS/3.22.2.38_211216145502 ChannelId(2) NebulaSDK/1.8.100112 Nebula AlipayDefined(nt:WIFI,ws:351|0|3.08125) AliApp(AP/10.2.53.7000) AlipayClient/10.2.53.7000 Language/zh-Hans useStatusBar/true isConcaveScreen/false Region/CNAriver/1.0.0'
+user_agent: 'Mozilla/5.0(iPhone;CPUiPhoneOS15_4_1likeMacOSX)AppleWebKit/605.1.15(KHTML,likeGecko)Mobile/15E148MicroMessenger/8.0.20(0x18001436)NetType/WIFILanguage/zh_CN'
 # # 哨兵模式--休眠时间（秒）
 sleep_time_left: 10
 sleep_time_right: 20

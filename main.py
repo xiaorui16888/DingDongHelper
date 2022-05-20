@@ -149,8 +149,8 @@ def getMultiReserveTime(products):
         'time': int(time.time()),
         'address_id': user_config['address_id'],
         'group_config_id': '',
-        'products': '[' + str(products) + ']',
-        'isBridge': 'false'
+        'products': '[' + json.dumps(products) + ']',
+        'isBridge': 'false',
     }
 
     text = execjs.compile(open(r'sign.js').read())
@@ -158,7 +158,10 @@ def getMultiReserveTime(products):
     signData = json.loads(text.call('sign', json.dumps(payload, ensure_ascii=False)))
     payload['nars'] = signData['nars']
     payload['sesi'] = signData['sesi']
-    response = requests.request("POST", GetMultiReserveTime_API, headers=COMMON_HEADERS, data=payload).json()
+    response = requests.request("POST", GetMultiReserveTime_API, headers=COMMON_HEADERS, data=payload, ).json()
+    # print(response.text)
+    # exit()
+
     # log.logger.info('运力接口响应数据'+str(response))
 
     try:
@@ -203,12 +206,14 @@ def checkOrder():
         'is_buy_vip': '0',
         'coupons_id': '',
         'is_buy_coupons': 0,
-        'packages': '[' + str(cart_products) + ']',
+        'packages': '[' + json.dumps(cart_products) + ']',
         'check_order_type': '0',
         'is_support_merge_payment': '1',
         'showData': 'true',
         'showMsg': 'false',
     }
+    # print(json.dumps(cart_products))
+    # print(payload)
 
     text = execjs.compile(open(r'sign.js').read())
     # body签名
@@ -269,7 +274,7 @@ def addNewOrder():
         'sharer_uid': '',
         'openid': '',
         'time': int(time.time()),
-        'package_order': '' + str(package_order) + '',
+        'package_order': '' + json.dumps(package_order) + '',
         'showData': 'true',
         'showMsg': 'false',
         'ab_config': '{"key_onion":"C"}',
@@ -334,7 +339,8 @@ def getOneAddress():
         'Accept-Encoding': 'gzip, deflate, br',
     }
     response = requests.request('get', url='https://sunquan.api.ddxq.mobi/api/v1/user/address/?'
-                                           'app_client_id='+str(user_config['app_client_id'])+'&h5_source=&wx=1&sharer_uid=', timeout=10000,
+                                           'app_client_id=' + str(
+        user_config['app_client_id']) + '&h5_source=&wx=1&sharer_uid=', timeout=10000,
                                 headers=header,
                                 ).json()
     print(response)
