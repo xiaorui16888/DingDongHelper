@@ -15,7 +15,9 @@
 
 如果你使用微信通知，请关注`WxPusher`公众号，并订阅此链接
 
-https://wxpusher.zjiecode.com/wxuser/?openId=orPQ806_O65ymisOhxCWuuaNV7vo#/
+//wxpusher.zjiecode.com/wxuser/?type=1&id=24780#/follow
+
+复制到微信，打开，就可以订阅。
 
 ## 特点
 
